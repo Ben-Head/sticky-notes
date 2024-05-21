@@ -1,0 +1,16 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Explicitly declare text files you want to always be normalized and converted to LF upon checkout.
+*.css text eol=lf
+*.js text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+
+# Binary files
+*.png binary
+*.jpg binary
+*.gif binary
+*.svg binary
+*.ico binary

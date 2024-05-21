@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BH Sticky Notes{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'posts/styles.css' %}">
+</head>
+<body>
+    <header class="bg-dark text-white py-3">
+        <div class="container text-center">
+            <h1 class="display-4">{% block header %}BH Sticky Notes{% endblock %}</h1>
+            <hr class="bg-light my-4">
+            <nav class="d-inline-block">
+                <a href="{% url 'post_list' %}" class="btn btn-primary">All Posts</a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'my_posts' %}" class="btn btn-primary">My Posts</a>
+                    <form id="logout-form" action="{% url 'logout' %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+                    <a href="{% url 'register' %}" class="btn btn-secondary">Register</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+    <main class="container mt-4">
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="bg-dark text-white py-3 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 BH Sticky Notes</p>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

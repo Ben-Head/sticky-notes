@@ -1,0 +1,3 @@
+User: Admin
+pass: Admin
+email: admin@stickynotes.com
