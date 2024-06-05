@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import post_list, post_detail, post_create, post_update, post_delete, register, user_login, my_posts
+from .views import post_list, post_detail, post_create, post_update, post_delete, register, user_login, my_posts, about, contact, privacy_policy
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -12,4 +12,7 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('login/', user_login, name='login'),
     path('logout/', LogoutView.as_view(), {'next_page': 'post_list'}, name='logout'),
+    path('about/', about, name='about'),
+    path('contact/', contact, name='contact'),
+    path('privacy-policy/', privacy_policy, name='privacy_policy'),
 ]

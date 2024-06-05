@@ -40,3 +40,17 @@ hr.bg-light {
 .invalid-feedback {
     display: block;
 }
+
+/* New styles for better spacing */
+h1, h2 {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+p, ul, ol {
+    margin-bottom: 20px;
+}
+
+.container {
+    margin-top: 30px;
+}

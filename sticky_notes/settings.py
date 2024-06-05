@@ -37,14 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
-    'posts',
+    'django.contrib.sites',  # Enable Django sites framework
+    'posts',  # Include the 'posts' app in installed apps
 ]
 
-SITE_ID = 1
+SITE_ID = 1  # Set the Site ID for the Django sites framework
 
-LOGIN_URL = '/login/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'  # Set the URL to redirect to for login
 
 
 MIDDLEWARE = [
@@ -62,7 +61,10 @@ ROOT_URLCONF = 'sticky_notes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'posts/templates'],
+        'DIRS': [
+            BASE_DIR / 'templates',  # Add the 'templates' directory to template directories
+            BASE_DIR / 'posts/templates',  # Add the 'posts/templates' directory to template directories
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,7 +76,6 @@ TEMPLATES = [
         },
     },
 ]
-
 
 WSGI_APPLICATION = 'sticky_notes.wsgi.application'
 
@@ -126,11 +127,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    BASE_DIR / "posts/static",
+    BASE_DIR / "posts/static",  # Add the 'posts/static' directory to static files directories
 ]
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = BASE_DIR / "staticfiles"  # Set the static files root directory
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Email backend for development (prints emails to the console)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
